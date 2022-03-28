@@ -11,9 +11,6 @@
 # CARTI_Dataset
 CARLA-based 3D object detection and tracking dataset generator using KITTI-format
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-
 
 
 
