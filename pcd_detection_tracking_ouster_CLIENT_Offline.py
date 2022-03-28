@@ -89,20 +89,6 @@ def time_synchronized():
 
 def main():
     record_time = time.time()
-    # hostname = 'os-122106000161.local'
-    # config = client.SensorConfig()
-    # config.udp_port_lidar = 7502
-    # config.udp_port_imu = 7503
-    # config.operating_mode = client.OperatingMode.OPERATING_NORMAL
-    # config.lidar_mode = client.LidarMode.MODE_2048x10
-    # client.set_config(hostname, config, persist=True, udp_dest_auto = True)
-
-    # config = client.get_config(hostname)
-    # print(config.operating_mode)
-    # print(f"sensor config of {hostname}:\n{config}")
-
-    # metadata, sample = client.Scans.sample(hostname, 1, lidar_port=7502)
-
     parser = ArgumentParser()
     parser.add_argument(
         '--device', default='cuda:0', help='Device used for inference')
@@ -142,38 +128,15 @@ def main():
                              100,
                              True)
 
-    # -----------------------1: pointpillars: good--------------------------------------
+    # -----------------------1: pointpillars: --------------------------------------
     config = '../configs/pointpillars/hv_pointpillars_fpn_sbn-all_4x8_2x_nus-3d.py'
     checkpoint = '../checkpoints/hv_pointpillars_fpn_sbn-all_4x8_2x_nus-3d_20200620_230405-2fa62f3d.pth'
 
-    # ------------------------2: centerpoint performance: very bad----------------------------
-    # config = '../configs/centerpoint/centerpoint_01voxel_second_secfpn_circlenms_4x8_cyclic_20e_nus.py'
-    # checkpoint = '../checkpoints/centerpoint_01voxel_second_secfpn_circlenms_4x8_cyclic_20e_nus_20201001_135205-5db91e00.pth'
-
-    # ------------------------3: votenet: not compatible--------------------------------------
-    # config = '../configs/votenet/votenet_8x8_scannet-3d-18class.py'
-    # checkpoint = '../checkpoints/votenet_8x8_scannet-3d-18class_20200620_230238-2cea9c3a.pth'
-
-    # ------------------------4: SECOND: not compatible--------------------------------------
-    # config = '../configs/second/hv_second_secfpn_6x8_80e_kitti-3d-car.py'
-    # checkpoint = '../checkpoints/hv_second_secfpn_6x8_80e_kitti-3d-car_20200620_230238-393f000c.pth'
-
-    # ------------------------5: 3dSSD: bad--------------------------------------
-    # config = '../configs/3dssd/3dssd_4x4_kitti-3d-car.py'
-    # checkpoint = '../checkpoints/3dssd_kitti-3d-car_20210602_124438-b4276f56.pth'
-
-    # ------------------------6: dynamic voxel - pointpillar: no detections--------------------------------------
-    # config = '../configs/dynamic_voxelization/dv_pointpillars_secfpn_6x8_160e_kitti-3d-car.py'
-    # checkpoint = '../checkpoints/dv_pointpillars_secfpn_6x8_160e_kitti-3d-car_20200620_230844-ee7b75c9.pth'
-
-    # ------------------------7: dynamic voxel - second: not compatible--------------------------------------
-    # config = '../configs/dynamic_voxelization/dv_second_secfpn_6x8_80e_kitti-3d-car.py'
-    # checkpoint = '../checkpoints/dv_second_secfpn_6x8_80e_kitti-3d-car_20200620_235228-ac2c1c0c.pth'
 
     # build the model from a config file and a checkpoint file
     model = init_model(config, checkpoint, device=args.device)
     # test a single image
-    FILE_NAME = './20220302_ousterdata'
+    FILE_NAME = '../../DATASET/_out_1LiDAR_roadside'
 
     TestData = sorted(glob.glob(FILE_NAME+'/*.bin'))
     ori_img = cv2.imread('./demo/pcap_out_000001/pcap_out_000001_online.png')
@@ -183,62 +146,11 @@ def main():
 
 
     for i in range(len(TestData)):
-        frame = TestData[i].split('/')[-1].split('.')
-        frame_name = frame[-3] + '.' + frame[-2]
-        print('frame: ', frame_name)
-        # plt.figure()
-        # ax = plt.axes(projection='3d')
-        # r = 30
-        # ax.set_xlim3d([-r, r])
-        # ax.set_ylim3d([-r, r])
-        # ax.set_zlim3d([-r, r])
-        #
-        # plt.title("3D Points from {}".format(hostname))
-        #
-        # # [doc-stag-plot-xyz-points]
-        # # transform data to 3d points and graph
-        # xyzlut = client.XYZLut(metadata)
-        # xyz = xyzlut(scan)
-        #
-        # [x, y, z] = [c.flatten() for c in np.dsplit(xyz, 3)]
-        # ax.scatter(x, y, z, c=z / max(z), s=0.2)
-        # # [doc-etag-plot-xyz-points]
-        # plt.show()
-
+        frame = TestData[i].split('.')[-1]
+        print('frame: ', frame)
 
         t1 = time.time()
-        # xyzlut = client.XYZLut(metadata)
-        # xyz = xyzlut(scan)
-        # xyz = client.XYZLut(metadata)(scan)
-        # cloud = o3d.utility.Vector3dVector(xyz.reshape((-1, 3)))
-        # cloud = o3d.geometry.PointCloud( o3d.utility.Vector3dVector(xyz.reshape((-1, 3))))
-        # pcd_xyz = xyz.reshape((-1, 3))
-        # print('pcd_xyz.shape', pcd_xyz.shape)
-        # cloud = o3d.geometry.PointCloud(o3d.utility.Vector3dVector(xyz.reshape((-1, 3))))
-        # axes = o3d.geometry.TriangleMesh.create_coordinate_frame(1.0)
-        # print('cloud', cloud)
-        # print('axes',axes)
         t = time.time()
-        # # xyz.tofile("xyz.bin")
-        # # print(time.time() - t)
-        # [x, y, z] = [c.flatten() for c in np.dsplit(xyz, 3)]
-        # reflectivity = scan.field(client.ChanField.REFLECTIVITY)
-        # x = x.reshape((-1, 1))
-        # y = y.reshape((-1, 1))
-        # z = z.reshape((-1, 1))
-        # reflec = reflectivity.reshape((-1, 1))
-
-        # pcd_xy = np.concatenate((x, y), axis=1)
-        # pcd_xyz = np.concatenate((pcd_xy, z), axis=1)
-        # pcd_xyzi = np.concatenate((pcd_xyz, reflec), axis=1)
-        # pcd_xyzii = np.concatenate((pcd_xyzi, reflec), axis=1)
-        # # print('pcd_xyzii.shape {}'.format(pcd_xyzii[0:10,:]))
-        # # np.save("./ousterdata/"+str(t)+".npy", pcd_xyzii)
-        # # my_data.astype('float32').tofile(fn)
-        # pcd_rotated = rotatey(pcd_xyzii)
-        # pcd_rotated.astype('float32').tofile("./20220302_ousterdata/"+str(t)+".bin")
-        # # show = False
-        # # break
 
     # for i in range(len(TestData)):
         t2 = time.time()
@@ -300,38 +212,12 @@ def main():
             z = (pred_bboxes[i_pred, 2] - 274)/100
             point = np.array([x, y, z, 1])
 
-            lidar_p_transpose_inverse = np.array([[ 0.99556006, -0.00223878,  0.09410188,  0        ],
-                                                [-0.00223878,  0.99887113,  0.04744948,  0        ],
-                                                [-0.09410188, -0.04744948,  0.99443119,  0        ],
-                                                [ 0,          0,          0,          1,          ]])
-            lidar_p_inverse = np.array([[ 0.99556006, -0.00223878, -0.09410188,  0.        ],
-                                                [-0.00223878,  0.99887113, -0.04744948 , 0.        ],
-                                                [ 0.09410188,  0.04744948,  0.99443119,  0.        ],
-                                                [ 0.,          0.,          0.         , 1.        ]])
-            T_matrix = np.array([[0.513895523658925, 0.0778410829560251, 0.854313851326052, 0],
-                                [-0.717870751299214, 0.584236891393597, 0.378587954330097, 0],
-                                [-0.469651972414064, -0.807841581338185, 0.356116559947161, 0],
-                                [-2431839.56465958, -4703513.49123251, 3544376.42814251, 1]])
-            T_initial = np.array([[0.557416143181466, 0.152206911251405, 0.816161932148275, 0],
-                                    [-0.695926122562278, 0.621734760462571, 0.359350413340491, 0],
-                                    [-0.452740626911406, -0.768296130277809, 0.452489757833270, 0],
-                                    [-2431839.56465958, -4703513.49123251, 3544376.42814251, 1]])
-            # xyz_ecef_P = np.array([[0.557416143181466, 0.152206911251405, 0.816161932148275, 0],
-            #                         [-0.695926122562278, 0.621734760462571, 0.359350413340491, 0],
-            #                         [-0.452740626911406, -0.768296130277809, 0.452489757833270, 0],
-            #                         [-2431839.56465958, -4703513.49123251, 3544376.42814251, 1]])
-            xyz_real = np.dot(point, lidar_p_inverse)
-            xyz_ecef = np.dot(xyz_real, T_initial)
-            # print("xyz_ecef",xyz_ecef)
-            ecef = pyproj.Proj(proj='geocent', ellps='WGS84',datum='WGS84')
-            lla = pyproj.Proj(proj='latlong', ellps='WGS84', datum='WGS84')
-            lon, lat, alt = pyproj.transform(ecef, lla, xyz_ecef[0], xyz_ecef[1], xyz_ecef[2], radians=False)
             t5 = time.time()
-            cmm_det_tra_data.append({'time': frame_name,'id': int(pred_bboxes[i_pred, -1]), 'lon':lon,
-                                        'lat': lat, 'alt': alt,
+            cmm_det_tra_data.append({'frame': frame,'id': int(pred_bboxes[i_pred, -1]), 'x':x,
+                                        'y': y, 'z': z,
                                         'x_size': round(pred_bboxes[i_pred, 3], 2), 'y_size': round(pred_bboxes[i_pred, 4], 2),
                                         'z_size': round(pred_bboxes[i_pred, 5], 2), 'yaw': round(pred_bboxes[i_pred, 6], 2), 
-                                        't1': str(record_time), 't2': t2, 't3':t3, 't4':t4, 't5': t5})
+                                        'time (ms)': (t5 - t1) * 1000, 'FPS': 1 / (t5 - t1)})
 
         # print("pred_bbox with id {}".format(pred_bboxes))
         print("cmm_det_tra_data {}".format(cmm_det_tra_data))
@@ -340,7 +226,7 @@ def main():
         send_data = (str(cmm_det_tra_data)+"\n")#json.dumps
         # s.send(send_data.encode('utf-8'))#
         
-        f = open('./logs/logdata-new-whole-'+str(record_time)+'.txt', "a")
+        f = open('./logs/logdata-CARTI-'+str(record_time)+'.txt', "a")
         f.write(send_data)
         f.close()
         # print(t2)
