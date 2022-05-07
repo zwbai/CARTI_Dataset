@@ -32,12 +32,12 @@ This repo is built based on the following outstanding works, which are greatly a
 
 Please install CARLA==0.9.13 and MMDetection3D==v1.0.0rc2
 
-# Prerequisites
+## Prerequisites
 
-- Linux or macOS (Windows is in experimental support)
-- Python 3.6+
+- Linux (Ubuntu 18.04)
+- Python 3.7
 - PyTorch 1.3+
-- CUDA 9.2+ (If you build PyTorch from source, CUDA 9.0 is also compatible)
+- CUDA 11.1
 - GCC 5+
 - [MMCV](https://mmcv.readthedocs.io/en/latest/#installation)
 
@@ -48,9 +48,7 @@ The required versions of MMCV, MMDetection and MMSegmentation for different vers
 | :-------------------: | :---------------------: | :--------------------: | :------------------------: |
 |       v1.0.0rc2       | mmdet>=2.19.0, <=3.0.0  | mmseg>=0.20.0, <=1.0.0 | mmcv-full>=1.4.8, <=1.7.0  |
 
-# Installation
-
-## Install MMDetection3D
+## Installation for MMdetection3D
 
 ### Quick installation instructions script
 
