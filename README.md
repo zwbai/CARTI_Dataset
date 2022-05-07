@@ -59,13 +59,14 @@ Otherwise, you should refer to the step-by-step installation instructions in the
 conda create -n open-mmlab-rc2 python=3.7 -y
 conda activate open-mmlab-rc2
 pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html --no-cache
-pip3 install openmim
+pip install openmim
 mim install mmcv-full
 mim install mmdet
 mim install mmsegmentation
 git clone https://github.com/open-mmlab/mmdetection3d.git
 git checkout tags/v1.0.0rc2
 cd mmdetection3d
-pip3 install -e .
+pip install -e .
+pip install open3d
 ```
 
