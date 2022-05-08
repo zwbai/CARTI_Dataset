@@ -43,8 +43,11 @@ Please install CARLA==0.9.13 and MMDetection3D==v1.0.0rc2
 ## Installation for CARLA
 Download the CARLA 0.9.10 at [Here](https://github.com/carla-simulator/carla/releases/tag/0.9.13)
 ```shell
-git clone https://github.com/carla-simulator/carla.git
-git checkout tags/0.9.13
+git clone https://github.com/zwbai/CARTI_Dataset.git
+```
+Run CARLA server
+```shell
+python CARTI_Dataset_V1.0.py
 ```
 
 
