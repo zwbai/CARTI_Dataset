@@ -26,7 +26,6 @@ This repo is built based on the following outstanding works, which are greatly a
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -41,6 +40,15 @@ Please install CARLA==0.9.13 and MMDetection3D==v1.0.0rc2
 - GCC 5+
 - [MMCV](https://mmcv.readthedocs.io/en/latest/#installation)
 
+## Installation for CARLA
+Download the CARLA 0.9.10 at [Here](https://github.com/carla-simulator/carla/releases/tag/0.9.13)
+```shell
+git clone https://github.com/carla-simulator/carla.git
+git checkout tags/0.9.13
+```
+
+
+## Installation for MMdetection3D
 
 The required versions of MMCV, MMDetection and MMSegmentation for different versions of MMDetection3D are as below. Please install the correct version of MMCV, MMDetection and MMSegmentation to avoid installation issues.
 
@@ -48,7 +56,6 @@ The required versions of MMCV, MMDetection and MMSegmentation for different vers
 | :-------------------: | :---------------------: | :--------------------: | :------------------------: |
 |       v1.0.0rc2       | mmdet>=2.19.0, <=3.0.0  | mmseg>=0.20.0, <=1.0.0 | mmcv-full>=1.4.8, <=1.7.0  |
 
-## Installation for MMdetection3D
 
 ### Quick installation instructions script
 
