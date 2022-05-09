@@ -29,7 +29,7 @@ This repo is built based on the following outstanding works, which are greatly a
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Please install CARLA==0.9.13 and MMDetection3D==0.18.0
+Please install `CARLA==0.9.13` and `MMDetection3D==0.18.0`
 
 ## Prerequisites
 
@@ -80,7 +80,7 @@ pip install -v -e .
 pip install open3d
 ```
 ### Validation
-Do not forget to add ./checkpoints/{}.pth and ./demo/data/kitti/{}.bin
+Do not forget to add `./checkpoints/{}.pth` and `./demo/data/kitti/{}.bin`
 ```shell
 python demo/pcd_demo.py demo/data/kitti/kitti_000008.bin configs/second/hv_second_secfpn_6x8_80e_kitti-3d-car.py checkpoints/hv_second_secfpn_6x8_80e_kitti-3d-car_20200620_230238-393f000c.pth --show
 ```
