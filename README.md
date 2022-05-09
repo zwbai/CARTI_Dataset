@@ -12,20 +12,6 @@
 CARLA-based 3D object detection and tracking dataset generator using KITTI-format
 
 
-
-
-### Built With
-
-This repo is built based on the following outstanding works, which are greatly appreciated by the authors.
-
-* [CARLA](https://github.com/carla-simulator/carla)
-* [MMDetection3D](https://github.com/open-mmlab/mmdetection)
-* [KITTI_vis_kit](https://github.com/zwbai/kitti_object_vis)
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -41,7 +27,7 @@ Please install `CARLA==0.9.13` and `MMDetection3D==0.18.0`
 - [MMCV](https://mmcv.readthedocs.io/en/latest/#installation)
 
 ## Installation for CARLA
-Download the CARLA 0.9.10 at [Here](https://github.com/carla-simulator/carla/releases/tag/0.9.13)
+Download the CARLA 0.9.13 at [Here](https://github.com/carla-simulator/carla/releases/tag/0.9.13)
 ```shell
 git clone https://github.com/zwbai/CARTI_Dataset.git
 ```
@@ -84,3 +70,13 @@ Do not forget to add `./checkpoints/{}.pth` and `./demo/data/kitti/{}.bin`
 ```shell
 python demo/pcd_demo.py demo/data/kitti/kitti_000008.bin configs/second/hv_second_secfpn_6x8_80e_kitti-3d-car.py checkpoints/hv_second_secfpn_6x8_80e_kitti-3d-car_20200620_230238-393f000c.pth --show
 ```
+## Acknowledgement
+
+This repo is built based on the following outstanding works, which are greatly appreciated by the authors.
+
+* [CARLA](https://github.com/carla-simulator/carla)
+* [MMDetection3D](https://github.com/open-mmlab/mmdetection)
+* [KITTI_vis_kit](https://github.com/zwbai/kitti_object_vis)
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
