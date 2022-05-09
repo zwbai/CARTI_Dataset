@@ -29,7 +29,7 @@ This repo is built based on the following outstanding works, which are greatly a
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Please install CARLA==0.9.13 and MMDetection3D==v1.0.0rc2
+Please install CARLA==0.9.13 and MMDetection3D==0.18.0
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ The required versions of MMCV, MMDetection and MMSegmentation for different vers
 | MMDetection3D version |   MMDetection version   | MMSegmentation version |        MMCV version        |
 | :-------------------: | :---------------------: | :--------------------: | :------------------------: |
 |       v1.0.0rc2       | mmdet>=2.19.0, <=3.0.0  | mmseg>=0.20.0, <=1.0.0 | mmcv-full>=1.4.8, <=1.7.0  |
-
+|        0.18.0         | mmdet>=2.19.0, <=3.0.0  | mmseg>=0.20.0, <=1.0.0 | mmcv-full>=1.3.17, <=1.5.0 |
 
 ### Quick installation instructions script
 
@@ -66,17 +66,17 @@ Assuming that you already have CUDA 11.0 installed, here is a full script for qu
 Otherwise, you should refer to the step-by-step installation instructions in the next section.
 
 ```shell
-conda create -n open-mmlab-rc2 python=3.7 -y
-conda activate open-mmlab-rc2
+conda create -n open-mmlab python=3.7 -y
+conda activate open-mmlab
 pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html --no-cache
-pip install openmim
-mim install mmcv-full
-mim install mmdet
-mim install mmsegmentation
+pip install mmcv-full==1.3.17 -f https://download.openmmlab.com/mmcv/dist/cu111/torch1.9.0/index.html
+pip install mmdet==2.19.0
+pip install mmsegmentation==0.20.0
+
 git clone https://github.com/open-mmlab/mmdetection3d.git
-git checkout tags/v1.0.0rc2
+git checkout tags/0.18.0
 cd mmdetection3d
-pip install -e .
+pip install -v -e .
 pip install open3d
 ```
 
