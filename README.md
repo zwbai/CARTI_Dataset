@@ -1,12 +1,20 @@
 
 <div id="top"></div>
 
-
-
-
-
-
 <!-- ABOUT THE PROJECT -->
+# Citation
+This project has been accepted by IEEE ITSC 2022. 
+If you find this work useful in your research, please consider cite:
+```shell
+@article{bai2022pillargrid,
+  title={PillarGrid: Deep Learning-based Cooperative Perception for 3D Object Detection from Onboard-Roadside LiDAR},
+  author={Bai, Zhengwei and Wu, Guoyuan and Barth, Matthew J and Liu, Yongkang and Sisbot, Akin and Oguchi, Kentaro},
+  journal={arXiv preprint arXiv:2203.06319},
+  year={2022}
+}
+```
+
+
 
 # CARTI_Dataset
 CARLA-based 3D object detection and tracking dataset generator using KITTI-format
