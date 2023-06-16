@@ -66,6 +66,7 @@ pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f ht
 pip install mmcv-full==1.3.17 -f https://download.openmmlab.com/mmcv/dist/cu111/torch1.9.0/index.html
 pip install mmdet==2.19.0
 pip install mmsegmentation==0.20.0
+pip install setuptools==59.5.0
 
 git clone https://github.com/open-mmlab/mmdetection3d.git
 git checkout tags/0.18.0
